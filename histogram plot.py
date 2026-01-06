@@ -7,7 +7,6 @@ Created on Wed Dec 31 16:43:48 2025
 #importing necassery packages
 import pandas as pd
 import matplotlib.pyplot as plt
-%matplotlib auto
 
 data = pd.read_csv('sub_gal.csv')#reading the data that is needed
 data_new = data[(data['zsp'] > 0) & (data['z_best'] > 0)]
@@ -15,17 +14,13 @@ data_new = data[(data['zsp'] > 0) & (data['z_best'] > 0)]
 
 """creating the histogram plots"""
 plt.figure()#begins the plot
-plt.subplot(2, 1, 1)
-plt.hist(data_new['zsp'], bins = 30, alpha = 0.6)
+#plt.subplot(2, 1, 1)#2 by 1 subplot, the first one
+plt.hist(data_new['zsp'],  alpha = 0.6, bins = 40, label = 'zsp')
 #the first histogram for zsp values
-plt.title('zsp')
-
-
-
-plt.subplot(2, 1, 2)
-plt.hist(data_new['z_best'], alpha = 0.5, bins = 30, color = 'red')
+plt.hist(data_new['z_best'], alpha = 0.5, bins = 40, color = 'red', label = 'z_best')
 #the second histogram for z_best values
-plt.title('z_best')
-
+plt.ylabel('Frequency')
+plt.xlabel('zsp and z_best')
+plt.title('Comparison of zsp and z_best')#creating the title for the z_best values histogram
 
 plt.show()#shows the plots
